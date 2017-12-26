@@ -38,18 +38,26 @@
           'chartType': 'ColumnChart',
           'containerId': 'chart_div',
           'options': {
-            'width': 800,
+            'width': 900,
             'height': 600,
             'hAxis': {
 		title: 'Maand',
-		format: '##'
+		format: '##',
+		gridlines: {
+			count: 1}
 		},
 	    'vAxis': {
-		title: "Bedrag (Euro's)"
+		title: "Bedrag (Euro's)",
+		gridlines: {
+			count: 6} 
 		},
 	    'title': 'Uitgaven boodschappen',
             'trendlines': {
-		0:{}}
+		0:{}},
+	    'bar': {groupWidth: '90%'},
+	    'colors': [
+		'#3399ff','#0000ff'
+		]
 			
           }
         });
