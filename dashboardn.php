@@ -1,37 +1,37 @@
-  <html>
-  <head>
-  	
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<html>
+<head>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart','controls']});
-      google.charts.setOnLoadCallback(drawDashboard);
+<script type="text/javascript">
+google.charts.load('current', {'packages':['corechart','controls']});
+google.charts.setOnLoadCallback(drawDashboard);
 
-      function drawDashboard() {
-      	var jsonData = $.ajax({
-			url: 'column_chart.php',
-    		dataType:"json",
-    		async: false
-			 }).responseText;
-		//alert (jsonData);
-		var data = new google.visualization.DataTable(jsonData);	
+function drawDashboard() {
+	var jsonData = $.ajax({
+		url: 'column_chart.php',
+		dataType:"json",
+   		async: false
+	}).responseText;
+
+	//alert (jsonData);
+
+	var data = new google.visualization.DataTable(jsonData);	
  
 
-		// Create a dashboard.
-        var dashboard = new google.visualization.Dashboard(
-            document.getElementById('dashboard_div'));
+	// Create a dashboard.
+    var dashboard = new google.visualization.Dashboard(
+    	document.getElementById('dashboard_div'));
 
  		// Create a range slider, passing some options
         var donutRangeSlider = new google.visualization.ControlWrapper({
-          'controlType': 'NumberRangeFilter',
-          'containerId': 'filter_div',
-          'options': {
+        	'controlType': 'NumberRangeFilter',
+        	'containerId': 'filter_div',
+        	'options': {
             'filterColumnLabel': 'PostMonth',
 			'minValue': 1,
      		'maxValue': 12
-        	}
-        });
+        }
+	});
 		
 		// Create a pie chart, passing some options
         var columnChart = new google.visualization.ChartWrapper({
@@ -41,24 +41,23 @@
             'width': 900,
             'height': 600,
             'hAxis': {
-		title: 'Maand',
-		format: '##',
-		gridlines: {
-			count: 1}
-		},
-	    'vAxis': {
-		title: "Bedrag (Euro's)",
-		gridlines: {
-			count: 6} 
-		},
-	    'title': 'Uitgaven boodschappen',
-            'trendlines': {
-		0:{}},
-	    'bar': {groupWidth: '90%'},
-	    'colors': [
-		'#3399ff','#0000ff'
-		]
-			
+				title: 'Maand',
+				format: '##',
+				gridlines: {
+					count: 1}
+			},
+	    	'vAxis': {
+				title: "Bedrag (Euro's)",
+				gridlines: {
+					count: 6} 
+			},
+	    	'title': 'Uitgaven boodschappen',
+            	'trendlines': {
+					0:{}},
+	    	'bar': {groupWidth: '90%'},
+	    	'colors': [
+				'#3399ff','#0000ff'
+			]
           }
         });
 		
